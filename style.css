@@ -145,10 +145,15 @@ nav a{
     display:flex;
     flex-direction:column;
     gap:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.1);
+    border-radius:8px;
+    padding:30px;
 }
 
 .right input{
     padding:12px;
+    border:1px solid #ddd;
+    border-radius:4px;
 }
 
 .right button{
@@ -156,6 +161,12 @@ nav a{
     color:white;
     border:none;
     padding:12px;
+}
+.right button:hover {
+    background:gray;
+    cursor:pointer;
+    transition:background 0.2s ease;
+    scale:1.1;
 }
 
 
