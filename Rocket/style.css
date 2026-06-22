@@ -8,7 +8,7 @@
     width: 100vw;
 
     background-image: url("./img/Space.png");
-    background-color: skyblue;
+    background-color: rgb(20, 0, 94);
     animation-name: bgMove;
     animation-duration: 6s;
     animation-fill-mode: forwards;
@@ -18,18 +18,14 @@
 .rocket{
     height: 200px;
     width: 200px;
-    border: 2px solid red;
     position: absolute;
     left: 350px;
     bottom: 150px;
     transform: rotate(45deg);
-    /* animation-name: rocketMove;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: 3; */
 
     animation: rocketMove 2s linear 3,
-               rocketRotate 1s ease-in-out 11s forwards;
+               rocketRotate 1s ease-in-out 11s forwards,
+               rocketFlyAway 1s ease-in 12s forwards;
 }
 
 .rocket img{
@@ -68,24 +64,28 @@
     }
 }
 
+@keyframes rocketFlyAway {
+    0%{
+        bottom: 150px;
+        opacity: 1;
+    }
+    100%{
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
 .cody{
     height: 150px;
     width: 150px;
-    border: 2px solid red;
     position: absolute; 
     bottom: 150px;
     left: -400px;
-    /* animation-name: codyMove;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    animation-delay: 6s; */
+
 
     animation: codyMove 3s 6s forwards ,
                codyInRocket 1s 9.5s forwards;
 
-    /* animatinName , duration , timingfunction,  delay  , fill mode */
-
-    /* animation-name: codyInRocket; */
 }
 
 .cody img{
