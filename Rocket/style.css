@@ -12,6 +12,7 @@
     animation-name: bgMove;
     animation-duration: 6s;
     animation-fill-mode: forwards;
+    background-size: cover;
     
 }
 
@@ -103,5 +104,36 @@
     100%{
         left: 390px;
         transform: scale(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px){
+    .rocket{
+        height: 140px;
+        width: 140px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        bottom: 100px;
+    }
+    .rocket img{ width: 100%; }
+    .cody{
+        height: 110px;
+        width: 110px;
+        left: 10px;
+        bottom: 100px;
+    }
+}
+
+@media (max-width: 420px){
+    .rocket{
+        height: 100px;
+        width: 100px;
+        bottom: 80px;
+    }
+    .cody{
+        height: 80px;
+        width: 80px;
+        bottom: 80px;
     }
 }
