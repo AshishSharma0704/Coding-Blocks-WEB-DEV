@@ -26,6 +26,11 @@ function addTask() {
         completeButton.className = "completeBtn";
         completeButton.onclick = function() {
             checkbox.checked = !checkbox.checked;
+            if (checkbox.checked) {
+                textSpan.classList.add("completed");
+            } else {
+                textSpan.classList.remove("completed");
+            }
         };
 
         var removeButton = document.createElement("button");

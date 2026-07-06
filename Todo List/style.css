@@ -69,6 +69,13 @@ li {
 
 .task-content span {
     word-break: break-word;
+    transition: all 0.3s ease;
+}
+
+.task-content span.completed {
+    text-decoration: line-through;
+    color: #888;
+    opacity: 0.7;
 }
 
 .task-content input[type="checkbox"] {
