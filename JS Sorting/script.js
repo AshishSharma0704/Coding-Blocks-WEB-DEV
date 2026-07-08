@@ -57,6 +57,8 @@ function applySorting() {
         productDATAS.sort((a, b) => a.price - b.price);
     } else if (sortValue === "desc") {
         productDATAS.sort((a, b) => b.price - a.price);
+    } else if (sortValue === "rating") {
+        productDATAS.sort((a, b) => b.rating - a.rating);
     }
 }
 
