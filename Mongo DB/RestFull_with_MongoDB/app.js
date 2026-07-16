@@ -115,6 +115,17 @@ app.get("/products/:id", async (req, res) => {
     }
 });
 
+//delete product
+app.delete("/products/:id", async (req, res) => {
+    try {
+        await Products.findByIdAndDelete(req.params.id);
+        res.redirect("/products");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error deleting product");
+    }
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
