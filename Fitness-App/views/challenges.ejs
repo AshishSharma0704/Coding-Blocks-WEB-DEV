@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges | Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/challenges.css">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<nav>
+
+    <h2>Fitness Community</h2>
+
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/workouts">Workouts</a></li>
+        <li><a href="/challenges">Challenges</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        <li><a href="/profile">Profile</a></li>
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>Fitness Challenges</h1>
+
+        <button class="btn" onclick="challengeDialog.showModal()">
+            + Create Challenge
+        </button>
+
+    </div>
+
+    <div class="cards">
+
+        <% challenges.forEach(challenge=>{ %>
+
+            <div class="card">
+
+                <h2><%= challenge.title %></h2>
+
+                <p><strong>Description:</strong> <%= challenge.description %></p>
+
+                <p><strong>Goal:</strong> <%= challenge.goal %></p>
+
+                <p><strong>Duration:</strong>
+                    <%= challenge.startDate %> -
+                    <%= challenge.endDate %>
+                </p>
+
+                <p><strong>Participants:</strong>
+                    <%= challenge.participants %>
+                </p>
+
+                <a href="/challenges/join/<%= challenge._id %>"
+                   class="join-btn">
+                    Join Challenge
+                </a>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</div>
+
+<dialog id="challengeDialog">
+
+    <h2>Create Challenge</h2>
+
+    <br>
+
+    <form method="POST" action="/challenges">
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Challenge Title"
+            required>
+
+        <textarea
+            name="description"
+            placeholder="Description"
+            required></textarea>
+
+        <input
+            type="text"
+            name="goal"
+            placeholder="Goal"
+            required>
+
+        <label>Start Date</label>
+
+        <input
+            type="date"
+            name="startDate"
+            required>
+
+        <label>End Date</label>
+
+        <input
+            type="date"
+            name="endDate"
+            required>
+
+        <button>Create Challenge</button>
+
+    </form>
+
+    <br>
+
+    <button onclick="challengeDialog.close()">
+        Cancel
+    </button>
+
+</dialog>
+
+<footer>
+
+    <p>© 2026 Fitness Challenge Community</p>
+
+</footer>
+
+</body>
+</html>

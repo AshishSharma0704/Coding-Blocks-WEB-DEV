@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    
+
+</head>
+<body>
+
+<nav>
+
+    <h2>Fitness Community</h2>
+
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/workouts">Workouts</a></li>
+        <li><a href="/challenges">Challenges</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <div class="welcome">
+        <h1>Welcome, <%= user ? user.name : "Fitness Enthusiast" %> 💪</h1>
+        <p>Stay consistent and achieve your fitness goals one workout at a time.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Workouts</h3>
+            <h2>25</h2>
+        </div>
+
+        <div class="card">
+            <h3>Current Streak</h3>
+            <h2>7 Days</h2>
+        </div>
+
+        <div class="card">
+            <h3>Challenge Points</h3>
+            <h2>430</h2>
+        </div>
+
+        <div class="card">
+            <h3>Calories Burned</h3>
+            <h2>12,500</h2>
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <div class="action-card">
+            <h3>🏋 Log Workout</h3>
+            <p>Add today's workout and earn challenge points.</p>
+            <a href="/workouts" class="btn">Go</a>
+        </div>
+
+        <div class="action-card">
+            <h3>🏆 Challenges</h3>
+            <p>Join new fitness challenges and compete.</p>
+            <a href="/challenges" class="btn">View</a>
+        </div>
+
+        <div class="action-card">
+            <h3>📈 Leaderboard</h3>
+            <p>Check your ranking among community members.</p>
+            <a href="/leaderboard" class="btn">Open</a>
+        </div>
+
+        <div class="action-card">
+            <h3>📷 Progress Photos</h3>
+            <p>Upload and compare your transformation.</p>
+            <a href="/photos" class="btn">Upload</a>
+        </div>
+
+        <div class="action-card">
+            <h3>👥 Community Feed</h3>
+            <p>See what your friends have been achieving.</p>
+            <a href="/community" class="btn">Visit</a>
+        </div>
+
+        <div class="action-card">
+            <h3>👤 My Profile</h3>
+            <p>Update your personal information and goals.</p>
+            <a href="/profile" class="btn">Profile</a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <p>© 2026 Fitness Challenge Community</p>
+
+</footer>
+
+</body>
+</html>

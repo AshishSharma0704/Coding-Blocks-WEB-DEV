@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/leaderboard.css">
+
+    <style>
+
+        
+
+    </style>
+
+</head>
+<body>
+
+<nav>
+
+    <h2>Fitness Community</h2>
+
+    <ul>
+
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/workouts">Workouts</a></li>
+        <li><a href="/challenges">Challenges</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        <li><a href="/profile">Profile</a></li>
+
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <div class="title">
+
+        <h1>🏆 Community Leaderboard</h1>
+
+        <p>Compete, stay consistent, and climb the rankings.</p>
+
+    </div>
+
+    <!-- Top 3 -->
+
+    <div class="top-three">
+
+        <% leaderboard.slice(0,3).forEach((user,index)=>{ %>
+
+            <div class="winner">
+
+                <h2>
+
+                    <% if(index===0){ %>🥇<% } %>
+
+                    <% if(index===1){ %>🥈<% } %>
+
+                    <% if(index===2){ %>🥉<% } %>
+
+                </h2>
+
+                <h3><%= user.name %></h3>
+
+                <p><strong><%= user.points %></strong> Points</p>
+
+                <p><%= user.streak %> Day Streak</p>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+    <!-- Full Leaderboard -->
+
+    <table>
+
+        <tr>
+
+            <th>Rank</th>
+
+            <th>Name</th>
+
+            <th>Points</th>
+
+            <th>Streak</th>
+
+            <th>Workouts</th>
+
+        </tr>
+
+        <% leaderboard.forEach((user,index)=>{ %>
+
+            <tr>
+
+                <td>#<%= index+1 %></td>
+
+                <td><%= user.name %></td>
+
+                <td><%= user.points %></td>
+
+                <td><%= user.streak %> 🔥</td>
+
+                <td><%= user.workouts %></td>
+
+            </tr>
+
+        <% }) %>
+
+    </table>
+
+</div>
+
+<footer>
+
+    <p>© 2026 Fitness Challenge Community</p>
+
+</footer>
+
+</body>
+</html>
