@@ -4,96 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Fitness Challenge Community</title>
-
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/dashboard.css">
-
     
-
 </head>
+
 <body>
 
-<nav>
+<%- include("partials/navbar") %>
 
-    <h2>Fitness Community</h2>
+<div class="dashboard">
 
-    <ul>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/workouts">Workouts</a></li>
-        <li><a href="/challenges">Challenges</a></li>
-        <li><a href="/leaderboard">Leaderboard</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/">Logout</a></li>
-    </ul>
+    <!-- ================= HERO ================= -->
 
-</nav>
+    <section class="hero">
 
-<div class="container">
+        <div class="hero-text">
 
-    <div class="welcome">
-        <h1>Welcome, <%= user ? user.name : "Fitness Enthusiast" %> 💪</h1>
-        <p>Stay consistent and achieve your fitness goals one workout at a time.</p>
-    </div>
+            <h1>Welcome, <%= user.name %> 👋</h1>
 
-    <div class="cards">
+            <p>
+                Keep pushing yourself! You're one workout closer to
+                achieving your weekly fitness goal.
+            </p>
 
-        <div class="card">
-            <h3>Total Workouts</h3>
+        </div>
+
+        <div class="hero-goal">
+
+            <h3>Weekly Goal</h3>
+
+            <p>4 of 7 Workouts Completed</p>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <span>57% Complete</span>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <h4>🔥 Current Streak</h4>
+            <h2><%= user.streak %> Days</h2>
+        </div>
+
+        <div class="stat-card">
+            <h4>🏋 Total Workouts</h4>
             <h2>25</h2>
         </div>
 
-        <div class="card">
-            <h3>Current Streak</h3>
-            <h2>7 Days</h2>
-        </div>
-
-        <div class="card">
-            <h3>Challenge Points</h3>
-            <h2>430</h2>
-        </div>
-
-        <div class="card">
-            <h3>Calories Burned</h3>
+        <div class="stat-card">
+            <h4>🔥 Calories Burned</h4>
             <h2>12,500</h2>
         </div>
 
-    </div>
-
-    <div class="actions">
-
-        <div class="action-card">
-            <h3>🏋 Log Workout</h3>
-            <p>Add today's workout and earn challenge points.</p>
-            <a href="/workouts" class="btn">Go</a>
+        <div class="stat-card">
+            <h4>🏆 Challenge Points</h4>
+            <h2><%= user.points %></h2>
         </div>
 
-        <div class="action-card">
-            <h3>🏆 Challenges</h3>
-            <p>Join new fitness challenges and compete.</p>
-            <a href="/challenges" class="btn">View</a>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="dashboard-grid">
+
+        <!-- LEFT -->
+
+        <div class="left-panel">
+
+            <!-- Active Challenge -->
+
+            <div class="card">
+
+                <h2>🏆 Active Challenge</h2>
+
+                <h3>30-Day Push-up Challenge</h3>
+
+                <p>Progress</p>
+
+                <div class="progress">
+
+                    <div class="progress-fill challenge-fill"></div>
+
+                </div>
+
+                <p>20 / 30 Days Completed</p>
+
+                <p><strong>Current Rank:</strong> #12</p>
+
+            </div>
+
+            <!-- Recent Workouts -->
+
+            <div class="card">
+
+                <h2>🏋 Recent Workouts</h2>
+
+                <ul class="activity">
+
+                    <li>
+                        <strong>Chest Workout</strong>
+                        <span>Yesterday</span>
+                    </li>
+
+                    <li>
+                        <strong>Leg Day</strong>
+                        <span>2 Days Ago</span>
+                    </li>
+
+                    <li>
+                        <strong>Morning Run</strong>
+                        <span>3 Days Ago</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Achievements -->
+
+            <div class="card">
+
+                <h2>🥇 Achievements</h2>
+
+                <div class="badges">
+
+                    <span>🔥 7 Day Streak</span>
+
+                    <span>🏆 Top 20</span>
+
+                    <span>💯 100 Workouts</span>
+
+                    <span>⭐ Challenge Winner</span>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="action-card">
-            <h3>📈 Leaderboard</h3>
-            <p>Check your ranking among community members.</p>
-            <a href="/leaderboard" class="btn">Open</a>
-        </div>
+        <!-- RIGHT -->
 
-        <div class="action-card">
-            <h3>📷 Progress Photos</h3>
-            <p>Upload and compare your transformation.</p>
-            <a href="/photos" class="btn">Upload</a>
-        </div>
+        <div class="right-panel">
 
-        <div class="action-card">
-            <h3>👥 Community Feed</h3>
-            <p>See what your friends have been achieving.</p>
-            <a href="/community" class="btn">Visit</a>
-        </div>
+            <!-- User Profile -->
 
-        <div class="action-card">
-            <h3>👤 My Profile</h3>
-            <p>Update your personal information and goals.</p>
-            <a href="/profile" class="btn">Profile</a>
+            <div class="card">
+
+                <h2>👤 My Profile</h2>
+
+                <p><strong>Name:</strong> <%= user.name %></p>
+
+                <p><strong>Email:</strong> <%= user.email %></p>
+
+                <p><strong>Age:</strong> <%= user.age %></p>
+
+                <p><strong>Height:</strong> <%= user.height %> cm</p>
+
+                <p><strong>Weight:</strong> <%= user.weight %> kg</p>
+
+            </div>
+
+            <!-- Leaderboard -->
+
+            <div class="card">
+
+                <h2>🏅 Leaderboard</h2>
+
+                <ol>
+
+                    <li>Rahul — 980 pts</li>
+
+                    <li>Priya — 940 pts</li>
+
+                    <li>Ashish — 890 pts</li>
+
+                </ol>
+
+                <a href="/leaderboard" class="btn">
+                    View Full Leaderboard
+                </a>
+
+            </div>
+
+            <!-- Quick Actions -->
+
+            <div class="card">
+
+                <h2>⚡ Quick Actions</h2>
+
+                <div class="quick-actions">
+
+                    <a href="/workouts" class="action-btn">
+                        🏋 Log Workout
+                    </a>
+
+                    <a href="/challenges" class="action-btn">
+                        🏆 Challenges
+                    </a>
+
+                    <a href="/photos" class="action-btn">
+                        📷 Progress Photos
+                    </a>
+
+                    <a href="/community" class="action-btn">
+                        👥 Community
+                    </a>
+
+                    <a href="/profile" class="action-btn">
+                        👤 My Profile
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>

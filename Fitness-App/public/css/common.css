@@ -1,0 +1,167 @@
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 70px;
+
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    z-index:1000;
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo a{
+    text-decoration:none;
+    color:#22c55e;
+    font-size:2rem;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.logo a:visited{
+    color:#22c55e;
+}
+
+.logo a:hover{
+    color:#4ade80;
+}
+
+/* ================= NAV LINKS ================= */
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links li{
+    list-style:none;
+}
+
+.nav-links li a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links li a:visited{
+    color:#fff;
+}
+
+.nav-links li a:hover{
+    color:#22c55e;
+}
+
+/* Register Button */
+
+.register-btn{
+    padding:10px 20px;
+    border-radius:8px;
+    background:#22c55e;
+    color:#fff !important;
+}
+
+.register-btn:hover{
+    background:#16a34a;
+    color:#fff !important;
+}
+
+/* ================= COMMON BUTTONS ================= */
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.primary{
+    background:#22c55e;
+    color:white;
+}
+
+.primary:hover{
+    background:#16a34a;
+    transform:translateY(-4px);
+}
+
+.secondary{
+    border:2px solid white;
+    color:white;
+}
+
+.secondary:hover{
+    background:white;
+    color:#111827;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+footer p{
+    margin:8px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    nav{
+        padding:18px 25px;
+    }
+
+    .logo a{
+        font-size:1.7rem;
+    }
+
+    .nav-links{
+        gap:15px;
+        font-size:14px;
+    }
+
+}
