@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Tracker | Fitness Challenge Community</title>
-
-    <link rel="stylesheet" href="/css/workouts.css">
     <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/workouts.css">
+    
 
     <style>
         
@@ -28,59 +28,18 @@
 
         <!-- Workout Form -->
 
-        <div class="card">
+        <div class="card top-bar">
 
-            <h2>Add Workout</h2>
-
-            <form action="/workouts" method="POST">
-
-                <div class="form-group">
-                    <label>Exercise Name</label>
-                    <input type="text" name="exercise" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Category</label>
-
-                    <select name="category">
-                        <option>Strength</option>
-                        <option>Cardio</option>
-                        <option>Yoga</option>
-                        <option>HIIT</option>
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-                    <label>Sets</label>
-                    <input type="number" name="sets">
-                </div>
-
-                <div class="form-group">
-                    <label>Reps</label>
-                    <input type="number" name="reps">
-                </div>
-
-                <div class="form-group">
-                    <label>Weight (kg)</label>
-                    <input type="number" name="weight">
-                </div>
-
-                <div class="form-group">
-                    <label>Duration (minutes)</label>
-                    <input type="number" name="duration">
-                </div>
-
-                <div class="form-group">
-                    <label>Calories Burned</label>
-                    <input type="number" name="calories">
-                </div>
-
-                <button>Add Workout</button>
-
-            </form>
-
+        <div>
+            <h2>Workout History</h2>
+            <p>Track every workout and monitor your fitness progress.</p>
         </div>
+
+        <a href="/workouts/add" class="btn">
+            ➕ Add Workout
+        </a>
+
+    </div>
 
         <!-- Workout Table -->
 
@@ -93,8 +52,12 @@
                 <tr>
                     <th>Exercise</th>
                     <th>Category</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Weight</th>
                     <th>Duration</th>
                     <th>Calories</th>
+                    <th>Date</th>
                     <th>Actions</th>
                 </tr>
 
@@ -111,12 +74,13 @@
                     <tr>
 
                         <td><%= workout.exercise %></td>
-
                         <td><%= workout.category %></td>
-
+                        <td><%= workout.sets %></td>
+                        <td><%= workout.reps %></td>
+                        <td><%= workout.weight %> kg</td>
                         <td><%= workout.duration %> min</td>
-
-                        <td><%= workout.calories %></td>
+                        <td><%= workout.caloriesBurned %></td>
+                        <td><%= workout.workoutDate.toLocaleDateString() %></td>
 
                         <td>
 

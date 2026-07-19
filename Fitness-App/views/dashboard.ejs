@@ -1,12 +1,13 @@
+```ejs
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Fitness Challenge Community</title>
+
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/dashboard.css">
-    
 </head>
 
 <body>
@@ -15,17 +16,16 @@
 
 <div class="dashboard">
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
         <div class="hero-text">
 
-            <h1>Welcome, <%= user.name %> 👋</h1>
+            <h1>👋 Welcome, <%= user.name %></h1>
 
             <p>
-                Keep pushing yourself! You're one workout closer to
-                achieving your weekly fitness goal.
+                Stay consistent! Every workout brings you closer to your fitness goal.
             </p>
 
         </div>
@@ -34,170 +34,248 @@
 
             <h3>Weekly Goal</h3>
 
-            <p>4 of 7 Workouts Completed</p>
+            <p><%= totalWorkouts %> / 7 Workouts</p>
 
             <div class="progress">
 
-                <div class="progress-fill"></div>
+                <div
+                    class="progress-fill"
+                    style="--progress:<%= progressPercentage %>%;">
+                </div>
 
             </div>
 
-            <span>57% Complete</span>
+            <span>
+
+                <%= Math.min(Math.round((totalWorkouts/7)*100),100) %>% Complete
+
+            </span>
 
         </div>
 
     </section>
 
-    <!-- ================= STATS ================= -->
+
+    <!-- STATS -->
 
     <section class="stats">
+
+        <div class="stat-card">
+            <h4>🏋 Total Workouts</h4>
+            <h2><%= totalWorkouts %></h2>
+        </div>
+
+        <div class="stat-card">
+            <h4>🔥 Calories Burned</h4>
+            <h2><%= totalCalories %></h2>
+        </div>
+
+        <div class="stat-card">
+            <h4>⏱ Workout Minutes</h4>
+            <h2><%= totalDuration %></h2>
+        </div>
 
         <div class="stat-card">
             <h4>🔥 Current Streak</h4>
             <h2><%= user.streak %> Days</h2>
         </div>
 
-        <div class="stat-card">
-            <h4>🏋 Total Workouts</h4>
-            <h2>25</h2>
-        </div>
-
-        <div class="stat-card">
-            <h4>🔥 Calories Burned</h4>
-            <h2>12,500</h2>
-        </div>
-
-        <div class="stat-card">
-            <h4>🏆 Challenge Points</h4>
-            <h2><%= user.points %></h2>
-        </div>
-
     </section>
 
-    <!-- ================= MAIN CONTENT ================= -->
 
     <div class="dashboard-grid">
 
-        <!-- LEFT -->
+        <!-- LEFT PANEL -->
 
         <div class="left-panel">
 
-            <!-- Active Challenge -->
+            <!-- RECENT WORKOUTS -->
 
             <div class="card">
 
-                <h2>🏆 Active Challenge</h2>
+                <div class="card-header">
 
-                <h3>30-Day Push-up Challenge</h3>
+                    <h2>🏋 Recent Workouts</h2>
 
-                <p>Progress</p>
-
-                <div class="progress">
-
-                    <div class="progress-fill challenge-fill"></div>
+                    <a href="/workouts">View All</a>
 
                 </div>
 
-                <p>20 / 30 Days Completed</p>
+                <% if(recentWorkouts.length===0){ %>
 
-                <p><strong>Current Rank:</strong> #12</p>
+                    <div class="empty">
+
+                        <p>No workouts logged yet.</p>
+
+                        <a href="/workouts/add" class="btn">
+
+                            Add Your First Workout
+
+                        </a>
+
+                    </div>
+
+                <% } else { %>
+
+                    <table class="recent-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Exercise</th>
+                                <th>Category</th>
+                                <th>Duration</th>
+                                <th>Calories</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        <% recentWorkouts.forEach(workout=>{ %>
+
+                            <tr>
+
+                                <td>
+
+                                    <strong><%= workout.exercise %></strong>
+
+                                </td>
+
+                                <td>
+
+                                    <%= workout.category %>
+
+                                </td>
+
+                                <td>
+
+                                    <%= workout.duration %> min
+
+                                </td>
+
+                                <td>
+
+                                    <%= workout.caloriesBurned %>
+
+                                </td>
+
+                            </tr>
+
+                        <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                <% } %>
 
             </div>
 
-            <!-- Recent Workouts -->
+
+            <!-- FITNESS SUMMARY -->
 
             <div class="card">
 
-                <h2>🏋 Recent Workouts</h2>
+                <h2>📊 Fitness Summary</h2>
 
-                <ul class="activity">
+                <div class="summary">
 
-                    <li>
-                        <strong>Chest Workout</strong>
-                        <span>Yesterday</span>
-                    </li>
+                    <div>
 
-                    <li>
-                        <strong>Leg Day</strong>
-                        <span>2 Days Ago</span>
-                    </li>
+                        <h3>Total Sessions</h3>
 
-                    <li>
-                        <strong>Morning Run</strong>
-                        <span>3 Days Ago</span>
-                    </li>
+                        <p><%= totalWorkouts %></p>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Total Duration</h3>
+
+                        <p><%= totalDuration %> mins</p>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Total Calories</h3>
+
+                        <p><%= totalCalories %></p>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Current Weight</h3>
+
+                        <p><%= user.weight %> kg</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <!-- PROFILE -->
+
+            <div class="card">
+
+                <h2>👤 Profile</h2>
+
+                <hr>
+
+                <p><strong>Name</strong></p>
+                <p><%= user.name %></p>
+
+                <p><strong>Email</strong></p>
+                <p><%= user.email %></p>
+
+                <p><strong>Age</strong></p>
+                <p><%= user.age %> Years</p>
+
+                <p><strong>Height</strong></p>
+                <p><%= user.height %> cm</p>
+
+                <p><strong>Weight</strong></p>
+                <p><%= user.weight %> kg</p>
+
+            </div>
+
+
+            <!-- UPCOMING FEATURES -->
+
+            <div class="card">
+
+                <h2>🚀 Coming Soon</h2>
+
+                <ul>
+
+                    <li>🏆 Fitness Challenges</li>
+
+                    <li>🥇 Live Leaderboard</li>
+
+                    <li>📷 Progress Photos</li>
+
+                    <li>👥 Community Feed</li>
+
+                    <li>📈 Workout Charts</li>
 
                 </ul>
 
             </div>
 
-            <!-- Achievements -->
 
-            <div class="card">
-
-                <h2>🥇 Achievements</h2>
-
-                <div class="badges">
-
-                    <span>🔥 7 Day Streak</span>
-
-                    <span>🏆 Top 20</span>
-
-                    <span>💯 100 Workouts</span>
-
-                    <span>⭐ Challenge Winner</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- RIGHT -->
-
-        <div class="right-panel">
-
-            <!-- User Profile -->
-
-            <div class="card">
-
-                <h2>👤 My Profile</h2>
-
-                <p><strong>Name:</strong> <%= user.name %></p>
-
-                <p><strong>Email:</strong> <%= user.email %></p>
-
-                <p><strong>Age:</strong> <%= user.age %></p>
-
-                <p><strong>Height:</strong> <%= user.height %> cm</p>
-
-                <p><strong>Weight:</strong> <%= user.weight %> kg</p>
-
-            </div>
-
-            <!-- Leaderboard -->
-
-            <div class="card">
-
-                <h2>🏅 Leaderboard</h2>
-
-                <ol>
-
-                    <li>Rahul — 980 pts</li>
-
-                    <li>Priya — 940 pts</li>
-
-                    <li>Ashish — 890 pts</li>
-
-                </ol>
-
-                <a href="/leaderboard" class="btn">
-                    View Full Leaderboard
-                </a>
-
-            </div>
-
-            <!-- Quick Actions -->
+            <!-- QUICK ACTIONS -->
 
             <div class="card">
 
@@ -205,24 +283,22 @@
 
                 <div class="quick-actions">
 
+                    <a href="/workouts/add" class="action-btn">
+
+                        ➕ Add Workout
+
+                    </a>
+
                     <a href="/workouts" class="action-btn">
-                        🏋 Log Workout
-                    </a>
 
-                    <a href="/challenges" class="action-btn">
-                        🏆 Challenges
-                    </a>
+                        🏋 My Workouts
 
-                    <a href="/photos" class="action-btn">
-                        📷 Progress Photos
-                    </a>
-
-                    <a href="/community" class="action-btn">
-                        👥 Community
                     </a>
 
                     <a href="/profile" class="action-btn">
-                        👤 My Profile
+
+                        👤 Edit Profile
+
                     </a>
 
                 </div>
@@ -242,4 +318,6 @@
 </footer>
 
 </body>
+
 </html>
+```

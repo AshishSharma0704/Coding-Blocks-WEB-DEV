@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Workout | Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/workouts.css">
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="container">
+
+    <div class="title">
+        <h1>🏋 Add Workout</h1>
+        <p>Track your fitness journey by logging today's workout.</p>
+    </div>
+
+    <div class="card">
+
+        <form action="/workouts/add" method="POST">
+
+            <!-- Exercise -->
+
+            <div class="form-group">
+                <label>Exercise Name</label>
+                <input
+                    type="text"
+                    name="exercise"
+                    placeholder="e.g. Bench Press"
+                    required
+                >
+            </div>
+
+            <!-- Category -->
+
+            <div class="form-group">
+                <label>Category</label>
+
+                <select name="category">
+
+                    <option value="Strength">Strength</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="HIIT">HIIT</option>
+                    <option value="Cycling">Cycling</option>
+                    <option value="Running">Running</option>
+                    <option value="Swimming">Swimming</option>
+                    <option value="CrossFit">CrossFit</option>
+                    <option value="Stretching">Stretching</option>
+                    <option value="Other">Other</option>
+
+                </select>
+            </div>
+
+            <!-- Sets -->
+
+            <div class="form-group">
+                <label>Sets</label>
+
+                <input
+                    type="number"
+                    name="sets"
+                    min="0"
+                    value="0"
+                >
+            </div>
+
+            <!-- Reps -->
+
+            <div class="form-group">
+                <label>Reps</label>
+
+                <input
+                    type="number"
+                    name="reps"
+                    min="0"
+                    value="0"
+                >
+            </div>
+
+            <!-- Weight -->
+
+            <div class="form-group">
+                <label>Weight (kg)</label>
+
+                <input
+                    type="number"
+                    name="weight"
+                    min="0"
+                    step="0.5"
+                    value="0"
+                >
+            </div>
+
+            <!-- Duration -->
+
+            <div class="form-group">
+                <label>Duration (minutes)</label>
+
+                <input
+                    type="number"
+                    name="duration"
+                    min="1"
+                    required
+                >
+            </div>
+
+            <!-- Calories -->
+
+            <div class="form-group">
+                <label>Calories Burned</label>
+
+                <input
+                    type="number"
+                    name="caloriesBurned"
+                    min="0"
+                    required
+                >
+            </div>
+
+            <!-- Distance -->
+
+            <div class="form-group">
+                <label>Distance (km)</label>
+
+                <input
+                    type="number"
+                    name="distance"
+                    min="0"
+                    step="0.1"
+                    value="0"
+                >
+            </div>
+
+            <!-- Date -->
+
+            <div class="form-group">
+                <label>Workout Date</label>
+
+                <input
+                    type="date"
+                    name="workoutDate"
+                >
+            </div>
+
+            <!-- Notes -->
+
+            <div class="form-group">
+                <label>Notes</label>
+
+                <textarea
+                    name="notes"
+                    rows="4"
+                    placeholder="How did today's workout feel?"
+                ></textarea>
+            </div>
+
+            <button class="btn">
+                💾 Save Workout
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

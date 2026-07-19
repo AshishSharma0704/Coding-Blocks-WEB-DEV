@@ -47,27 +47,8 @@ app.use(
 app.use("/", authRoutes);
 app.use("/", dashboardRoutes);
 // Workouts
-app.get("/workouts", (req, res) => {
-
-    const workouts = [
-        {
-            _id: 1,
-            exercise: "Bench Press",
-            category: "Strength",
-            duration: 45,
-            calories: 350
-        },
-        {
-            _id: 2,
-            exercise: "Running",
-            category: "Cardio",
-            duration: 30,
-            calories: 280
-        }
-    ];
-
-    res.render("workouts", { workouts });
-});
+const workoutRoutes = require("./routes/workout");
+app.use("/", workoutRoutes);
 
 // Challenges
 app.get("/challenges", (req, res) => {
