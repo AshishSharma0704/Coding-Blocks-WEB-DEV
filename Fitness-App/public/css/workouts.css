@@ -239,73 +239,72 @@ tbody tr td:last-child{
 /* ==========================================
    ACTION BUTTONS
 ========================================== */
+.action-buttons{
 
-.edit{
+    display:flex;
 
-    display:inline-flex;
+    gap:10px;
 
     justify-content:center;
 
     align-items:center;
 
-    width:42px;
+}
 
-    height:42px;
+.edit,
+.delete{
 
-    border-radius:50%;
+    display:inline-flex;
 
-    background:#2563eb;
+    align-items:center;
 
-    color:white;
+    justify-content:center;
+
+    gap:6px;
+
+    padding:10px 18px;
+
+    border-radius:30px;
 
     text-decoration:none;
 
-    transition:.3s;
+    font-size:14px;
 
-    margin-right:8px;
+    font-weight:600;
+
+    color:#fff;
+
+    transition:all .3s ease;
+
+}
+
+.edit{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
 
 }
 
 .edit:hover{
 
-    transform:scale(1.1);
+    transform:translateY(-3px);
 
-    box-shadow:0 8px 20px rgba(37,99,235,.4);
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
 
 }
 
 .delete{
 
-    display:inline-flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    background:#ef4444;
-
-    color:white;
-
-    text-decoration:none;
-
-    transition:.3s;
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
 }
 
 .delete:hover{
 
-    transform:scale(1.1);
+    transform:translateY(-3px);
 
-    box-shadow:0 8px 20px rgba(239,68,68,.4);
+    box-shadow:0 10px 25px rgba(239,68,68,.35);
 
 }
-
 /* ==========================================
    EMPTY TABLE
 ========================================== */

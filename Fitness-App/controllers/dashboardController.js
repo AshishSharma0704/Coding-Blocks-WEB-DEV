@@ -47,3 +47,81 @@ exports.getDashboard = async (req, res) => {
 
     }
 };
+exports.getEditProfile = async (req, res) => {
+
+    try {
+
+        const user = await User.findById(req.session.user.id);
+
+        if (!user) {
+            return res.redirect("/login");
+        }
+
+        res.render("editProfile", {
+            user
+        });
+
+    } catch (err) {
+
+        console.log(err);
+
+        res.status(500).send("Server Error");
+
+    }
+
+};
+exports.postEditProfile = async (req, res) => {
+
+    try {
+
+        const {
+            name,
+            age,
+            height,
+            weight,
+            goal,
+            bio
+        } = req.body;
+
+        const user = await User.findByIdAndUpdate(
+
+            req.session.user.id,
+
+            {
+                name,
+                age,
+                height,
+                weight,
+                goal,
+                bio
+            },
+
+            {
+                returnDocument: "after",
+                runValidators: true
+            }
+
+        );
+
+        if (!user) {
+
+            return res.redirect("/login");
+
+        }
+
+        // Update session so the navbar/dashboard immediately shows the new name
+        req.session.user.name = user.name;
+
+        res.redirect("/profile");
+
+    }
+
+    catch (err) {
+
+        console.log(err);
+
+        res.status(500).send("Server Error");
+
+    }
+
+};

@@ -125,47 +125,7 @@ app.get("/leaderboard", (req, res) => {
     res.render("leaderboard", { leaderboard });
 });
 
-// Profile
-app.get("/profile", (req, res) => {
 
-    const user = {
-        name: "Ashish Sharma",
-        email: "ashish@example.com",
-        age: 22,
-        height: 175,
-        weight: 72,
-        bmi: 23.5,
-        totalWorkouts: 145,
-        points: 920,
-        streak: 18,
-        challenges: 6
-    };
-
-    const workouts = [
-        {
-            exercise: "Bench Press",
-            duration: 45,
-            calories: 320
-        },
-        {
-            exercise: "Running",
-            duration: 30,
-            calories: 270
-        },
-        {
-            exercise: "Cycling",
-            duration: 50,
-            calories: 420
-        }
-    ];
-
-    res.render("profile", {
-        user,
-        workouts
-    });
-});
-
-// ================= SERVER =================
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

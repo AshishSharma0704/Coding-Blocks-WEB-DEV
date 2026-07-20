@@ -1,0 +1,30 @@
+:root{
+
+    --primary:#22c55e;
+    --primary-dark:#16a34a;
+    --primary-light:#4ade80;
+
+    --background:#050a0f;
+    --navbar:#0f172a;
+    --footer:#111827;
+
+    --card-bg:rgba(255,255,255,.08);
+
+    --glass-border:rgba(255,255,255,.12);
+
+    --text:#ffffff;
+    --text-light:#d1d5db;
+    --text-muted:#94a3b8;
+
+    --success:#22c55e;
+    --warning:#facc15;
+    --danger:#ef4444;
+    --info:#3b82f6;
+
+    --shadow:0 12px 30px rgba(0,0,0,.35);
+    --hover-shadow:0 20px 45px rgba(34,197,94,.18);
+
+    --radius:20px;
+    --button-radius:10px;
+    --transition:.3s ease;
+}

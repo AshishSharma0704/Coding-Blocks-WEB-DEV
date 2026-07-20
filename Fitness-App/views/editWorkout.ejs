@@ -1,0 +1,236 @@
+```ejs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Workout | Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/updateWorkout.css">
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="container">
+
+    <div class="title">
+        <h1>Edit Workout</h1>
+        <p>Update your workout details.</p>
+    </div>
+
+    <div class="card">
+
+        <form action="/workouts/edit/<%= workout._id %>" method="POST">
+
+            <!-- Exercise -->
+
+            <div class="form-group">
+                <label>Exercise Name</label>
+
+                <input
+                    type="text"
+                    name="exercise"
+                    value="<%= workout.exercise %>"
+                    required
+                >
+            </div>
+
+            <!-- Category -->
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select name="category">
+
+                    <option value="Strength"
+                        <%= workout.category === "Strength" ? "selected" : "" %>>
+                        Strength
+                    </option>
+
+                    <option value="Cardio"
+                        <%= workout.category === "Cardio" ? "selected" : "" %>>
+                        Cardio
+                    </option>
+
+                    <option value="Yoga"
+                        <%= workout.category === "Yoga" ? "selected" : "" %>>
+                        Yoga
+                    </option>
+
+                    <option value="HIIT"
+                        <%= workout.category === "HIIT" ? "selected" : "" %>>
+                        HIIT
+                    </option>
+
+                    <option value="Cycling"
+                        <%= workout.category === "Cycling" ? "selected" : "" %>>
+                        Cycling
+                    </option>
+
+                    <option value="Running"
+                        <%= workout.category === "Running" ? "selected" : "" %>>
+                        Running
+                    </option>
+
+                    <option value="Swimming"
+                        <%= workout.category === "Swimming" ? "selected" : "" %>>
+                        Swimming
+                    </option>
+
+                    <option value="CrossFit"
+                        <%= workout.category === "CrossFit" ? "selected" : "" %>>
+                        CrossFit
+                    </option>
+
+                    <option value="Stretching"
+                        <%= workout.category === "Stretching" ? "selected" : "" %>>
+                        Stretching
+                    </option>
+
+                    <option value="Other"
+                        <%= workout.category === "Other" ? "selected" : "" %>>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Sets -->
+
+            <div class="form-group">
+
+                <label>Sets</label>
+
+                <input
+                    type="number"
+                    name="sets"
+                    min="0"
+                    value="<%= workout.sets %>"
+                >
+
+            </div>
+
+            <!-- Reps -->
+
+            <div class="form-group">
+
+                <label>Reps</label>
+
+                <input
+                    type="number"
+                    name="reps"
+                    min="0"
+                    value="<%= workout.reps %>"
+                >
+
+            </div>
+
+            <!-- Weight -->
+
+            <div class="form-group">
+
+                <label>Weight (kg)</label>
+
+                <input
+                    type="number"
+                    name="weight"
+                    min="0"
+                    step="0.5"
+                    value="<%= workout.weight %>"
+                >
+
+            </div>
+
+            <!-- Duration -->
+
+            <div class="form-group">
+
+                <label>Duration (minutes)</label>
+
+                <input
+                    type="number"
+                    name="duration"
+                    min="1"
+                    value="<%= workout.duration %>"
+                    required
+                >
+
+            </div>
+
+            <!-- Calories -->
+
+            <div class="form-group">
+
+                <label>Calories Burned</label>
+
+                <input
+                    type="number"
+                    name="caloriesBurned"
+                    min="0"
+                    value="<%= workout.caloriesBurned %>"
+                    required
+                >
+
+            </div>
+
+            <!-- Distance -->
+
+            <div class="form-group">
+
+                <label>Distance (km)</label>
+
+                <input
+                    type="number"
+                    name="distance"
+                    min="0"
+                    step="0.1"
+                    value="<%= workout.distance %>"
+                >
+
+            </div>
+
+            <!-- Workout Date -->
+
+            <div class="form-group">
+
+                <label>Workout Date</label>
+
+                <input
+                    type="date"
+                    name="workoutDate"
+                    value="<%= workout.workoutDate ? workout.workoutDate.toISOString().split('T')[0] : '' %>"
+                >
+
+            </div>
+
+            <!-- Notes -->
+
+            <div class="form-group">
+
+                <label>Notes</label>
+
+                <textarea
+                    name="notes"
+                    rows="4"
+                ><%= workout.notes %></textarea>
+
+            </div>
+
+            <button class="btn">
+                Update Workout
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+```

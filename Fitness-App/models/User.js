@@ -1,7 +1,7 @@
-// User model
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+
     name: {
         type: String,
         required: true,
@@ -36,6 +36,23 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
+    goal: {
+        type: String,
+        enum: [
+            "Weight Loss",
+            "Muscle Gain",
+            "Maintain Fitness",
+            "Endurance",
+            "General Health"
+        ],
+        default: "General Health"
+    },
+
+    bio: {
+        type: String,
+        default: ""
+    },
+
     points: {
         type: Number,
         default: 0
@@ -44,12 +61,10 @@ const userSchema = new mongoose.Schema({
     streak: {
         type: Number,
         default: 0
-    },
-
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
+
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("User", userSchema);
