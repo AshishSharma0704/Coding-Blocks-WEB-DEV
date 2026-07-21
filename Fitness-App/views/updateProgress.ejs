@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Update Progress</title>
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/updateProgress.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="container">
+
+    <div class="page-title">
+
+        <h1>Update Challenge Progress</h1>
+
+        <p>Keep moving toward your fitness goal.</p>
+
+    </div>
+
+    <div class="progress-card">
+
+        <h2>
+            <%= userChallenge.challenge.title %>
+        </h2>
+
+        <p class="description">
+
+            <%= userChallenge.challenge.description %>
+
+        </p>
+
+        <div class="info">
+
+            <div>
+
+                <span>Category</span>
+
+                <strong>
+
+                    <%= userChallenge.challenge.category %>
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>Duration</span>
+
+                <strong>
+
+                    <%= userChallenge.challenge.duration %> Days
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>Reward</span>
+
+                <strong>
+
+                    🏅 <%= userChallenge.challenge.points %>
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <p>
+
+                <strong>Current Progress:</strong>
+
+                <%= userChallenge.progress %>
+
+            </p>
+
+            <p>
+
+                <strong>Target:</strong>
+
+                <%= userChallenge.challenge.target %>
+
+            </p>
+
+        </div>
+
+        <%
+            const percent = Math.min(
+                (userChallenge.progress / userChallenge.challenge.target) * 100,
+                100
+            );
+        %>
+
+        <div class="progress">
+
+            <div class="progress-fill"
+
+                 style="width:<%= percent %>%">
+
+            </div>
+
+        </div>
+
+        <p class="percent">
+
+            <%= percent.toFixed(0) %>% Completed
+
+        </p>
+
+        <form action="/my-challenges/update/<%= userChallenge._id %>"
+              method="POST">
+
+            <label>
+
+                Today's Progress
+
+            </label>
+
+            <input
+                type="number"
+                name="progress"
+                min="1"
+                required
+                placeholder="Enter today's progress">
+
+            <button
+                type="submit"
+                class="btn">
+
+                Save Progress
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

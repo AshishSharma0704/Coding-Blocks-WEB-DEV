@@ -118,3 +118,21 @@ exports.postLogin = async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 };
+
+exports.logout = (req, res) => {
+
+    req.session.destroy((err) => {
+
+        if (err) {
+
+            return res.status(500).send("Unable to logout");
+
+        }
+
+        res.clearCookie("connect.sid");
+
+        res.redirect("/");
+
+    });
+
+};

@@ -8,22 +8,30 @@
 
     <ul class="nav-links">
 
-        <li><a href="/">Home</a></li>
+    <li><a href="/">Home</a></li>
 
-        <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/workouts">Workouts</a></li>
 
-        <li><a href="/workouts">Workouts</a></li>
+    <li><a href="/challenges">Challenges</a></li>
 
-        <li><a href="/challenges">Challenges</a></li>
+    <li><a href="/leaderboard">Leaderboard</a></li>
 
-        <li><a href="/leaderboard">Leaderboard</a></li>
+    <% if(user){ %>
+
+        <li><a href="/my-challenges">My Challenges</a></li>
 
         <li><a href="/profile">Profile</a></li>
 
+        <li><a href="/logout">Logout</a></li>
+
+    <% } else { %>
+
         <li><a href="/login">Login</a></li>
 
-        <li><a href="/register" class="register-btn">Register</a></li>
+        <li><a href="/register">Register</a></li>
 
-    </ul>
+    <% } %>
+
+</ul>
 
 </nav>

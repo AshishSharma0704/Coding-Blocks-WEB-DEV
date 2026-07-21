@@ -12,10 +12,13 @@ html{
 }
 
 body{
-    background:#f4f6f9;
-    color:#333;
+    background: var(--background);
+    color: var(--text);
 }
-
+main{
+    background: var(--background);
+    min-height: 100vh;
+}
 /* ================= NAVBAR ================= */
 
 nav{

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Challenges</title>
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/myChallenges.css">
+    <link rel="stylesheet" href="/css/common.css">
+    
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="container">
+
+    <div class="page-title">
+
+        <h1>🏆 My Challenges</h1>
+
+        <p>
+            Track your progress and complete your fitness goals.
+        </p>
+
+    </div>
+
+    <% if(userChallenges.length===0){ %>
+
+        <div class="empty-card">
+
+            <h2>No Challenges Joined</h2>
+
+            <p>
+                Join a challenge and start your fitness journey.
+            </p>
+
+            <a href="/challenges" class="btn">
+
+                Browse Challenges
+
+            </a>
+
+        </div>
+
+    <% }else{ %>
+
+    <div class="challenge-grid">
+
+    <% userChallenges.forEach(item=>{ %>
+
+    <%
+
+        const percent = Math.min(
+            (item.progress/item.challenge.target)*100,
+            100
+        );
+
+    %>
+
+    <div class="challenge-card">
+
+        <div class="card-top">
+
+            <h2>
+
+                <%= item.challenge.title %>
+
+            </h2>
+
+            <span class="difficulty <%= item.challenge.difficulty.toLowerCase() %>">
+
+                <%= item.challenge.difficulty %>
+
+            </span>
+
+        </div>
+
+        <p class="description">
+
+            <%= item.challenge.description %>
+
+        </p>
+
+        <div class="details">
+
+            <div>
+
+                <span>Category</span>
+
+                <strong>
+
+                    <%= item.challenge.category %>
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>Duration</span>
+
+                <strong>
+
+                    <%= item.challenge.duration %> Days
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>Reward</span>
+
+                <strong>
+
+                    🏅 <%= item.challenge.points %>
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="progress-header">
+
+            <span>
+
+                Progress
+
+            </span>
+
+            <span>
+
+                <%= item.progress %> /
+                <%= item.challenge.target %>
+
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div class="progress-fill"
+
+                 style="width:<%= percent %>%">
+
+            </div>
+
+        </div>
+
+        <div class="percentage">
+
+            <%= percent.toFixed(0) %>% Complete
+
+        </div>
+
+        <div class="status">
+
+            <% if(item.completed){ %>
+
+                <span class="completed">
+
+                    ✅ Completed
+
+                </span>
+
+            <% }else{ %>
+
+                <span class="active">
+
+                    🔥 Active
+
+                </span>
+
+            <% } %>
+
+        </div>
+
+        <% if(!item.completed){ %>
+
+        <form action="/my-challenges/update/<%= item._id %>" method="GET">
+            <button type="submit" class="btn">
+                +1 Progress
+            </button>
+        </form>
+
+        <% }else{ %>
+
+        <button class="btn completed-btn"
+
+                disabled>
+
+            Completed
+
+        </button>
+
+        <% } %>
+
+    </div>
+
+    <% }) %>
+
+    </div>
+
+    <% } %>
+
+</div>
+
+</body>
+
+</html>
