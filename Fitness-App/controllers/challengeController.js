@@ -1,5 +1,6 @@
 const Challenge = require("../models/Challenge");
 const UserChallenge = require("../models/UserChallenge");
+const User = require("../models/User");
 exports.getChallenges = async (req, res) => {
 
     try {
@@ -233,7 +234,23 @@ exports.postUpdateProgress = async (req, res) => {
             userChallenge.progress =
                 userChallenge.challenge.target;
 
-            userChallenge.completed = true;
+            if (!userChallenge.completed) {
+
+                userChallenge.completed = true;
+
+                if (!userChallenge.rewardClaimed) {
+
+                    const user = await User.findById(userChallenge.user);
+
+                    user.totalPoints += userChallenge.challenge.points;
+
+                    await user.save();
+
+                    userChallenge.rewardClaimed = true;
+
+                }
+
+            }
 
         }
 
