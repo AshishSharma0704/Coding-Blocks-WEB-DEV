@@ -12,15 +12,13 @@
 }
 
 body{
-    background:
-        linear-gradient(rgba(5,10,15,.82), rgba(5,10,15,.90)),
-        url("/images/Hero.avif");
+    background:var(--background);
+    color:var(--text);
 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 
-    color: white;
 
     min-height: 100vh;
 

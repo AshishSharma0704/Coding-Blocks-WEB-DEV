@@ -66,47 +66,10 @@ const challengeRoutes = require("./routes/challenge");
 
 app.use(challengeRoutes);
 
-
-
 // Leaderboard
-app.get("/leaderboard", (req, res) => {
+const leaderboardRoutes = require("./routes/leaderboard");
 
-    const leaderboard = [
-        {
-            name: "Rahul",
-            points: 980,
-            streak: 45,
-            workouts: 180
-        },
-        {
-            name: "Priya",
-            points: 910,
-            streak: 38,
-            workouts: 165
-        },
-        {
-            name: "Ashish",
-            points: 860,
-            streak: 32,
-            workouts: 150
-        },
-        {
-            name: "Amit",
-            points: 790,
-            streak: 29,
-            workouts: 140
-        },
-        {
-            name: "Sneha",
-            points: 720,
-            streak: 25,
-            workouts: 128
-        }
-    ];
-
-    res.render("leaderboard", { leaderboard });
-});
-
+app.use(leaderboardRoutes);
 
 
 app.listen(PORT, () => {

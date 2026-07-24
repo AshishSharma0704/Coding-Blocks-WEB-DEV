@@ -242,7 +242,7 @@ exports.postUpdateProgress = async (req, res) => {
 
                     const user = await User.findById(userChallenge.user);
 
-                    user.totalPoints += userChallenge.challenge.points;
+                    user.points += userChallenge.challenge.points;
 
                     await user.save();
 

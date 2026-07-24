@@ -4,69 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Challenge Community</title>
+
+    <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
-    
 </head>
 <body>
 
 <%- include("partials/navbar") %>
 
 
-
 <section class="hero">
 
-    <div class="hero-content animate-hero">
+    <div class="container hero-wrapper">
 
-        <h1>
-            Transform Your <br>
-            Fitness Journey
-        </h1>
+        <div class="hero-content">
 
-        <p>
+            <span class="tag">
+                🏋 Fitness Challenge Community
+            </span>
 
-            Track workouts, compete in exciting fitness challenges,
-            upload progress photos, earn rewards,
-            and stay motivated with an active community.
+            <h1>
+                Transform Your
+                <span>Fitness</span>
+                Journey Together
+            </h1>
 
-        </p>
+            <p>
+                Build healthy habits with your community.
+                Track workouts, compete in challenges,
+                earn rewards and stay motivated every day.
+            </p>
 
-        <div class="hero-buttons">
+            <div class="hero-buttons">
 
-            <a href="/register" class="btn primary">
-                Get Started
-            </a>
+                <a href="/register" class="btn">
+                    Get Started
+                </a>
 
-            <a href="/login" class="btn secondary">
-                Login
-            </a>
+                <a href="/challenges" class="btn btn-outline">
+                    Explore Challenges
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="glass-card hero-stat">
+                    <h2>5K+</h2>
+                    <span>Members</span>
+                </div>
+
+                <div class="glass-card hero-stat">
+                    <h2>150+</h2>
+                    <span>Challenges</span>
+                </div>
+
+                <div class="glass-card hero-stat">
+                    <h2>12K+</h2>
+                    <span>Workouts</span>
+                </div>
+
+                <div class="glass-card hero-stat">
+                    <h2>98%</h2>
+                    <span>Success Rate</span>
+                </div>
+
+            </div>
 
         </div>
 
+        <div class="hero-image">
+            <video
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            >
+                <source src="/images/hero.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-        <div class="hero-stats">
+    </div>
 
-            <div>
+</section>
 
-                <h2>10K+</h2>
 
-                <span>Members</span>
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Everything You Need</h2>
+
+            <p>
+                Everything required to build consistency
+                and achieve your fitness goals.
+            </p>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="glass-card feature-card">
+
+                <div class="feature-icon">🏋</div>
+
+                <h3>Workout Tracking</h3>
+
+                <p>
+                    Record workouts, calories,
+                    duration and personal records.
+                </p>
 
             </div>
 
-            <div>
+            <div class="glass-card feature-card">
 
-                <h2>50K+</h2>
+                <div class="feature-icon">🏆</div>
 
-                <span>Workouts</span>
+                <h3>Challenges</h3>
+
+                <p>
+                    Join exciting monthly and weekly
+                    fitness competitions.
+                </p>
 
             </div>
 
-            <div>
+            <div class="glass-card feature-card">
 
-                <h2>300+</h2>
+                <div class="feature-icon">📈</div>
 
-                <span>Challenges</span>
+                <h3>Progress Analytics</h3>
+
+                <p>
+                    Visualize your fitness journey
+                    with charts and statistics.
+                </p>
+
+            </div>
+
+            <div class="glass-card feature-card">
+
+                <div class="feature-icon">👥</div>
+
+                <h3>Community</h3>
+
+                <p>
+                    Compete with friends,
+                    climb the leaderboard
+                    and stay motivated.
+                </p>
 
             </div>
 
@@ -77,87 +169,121 @@
 </section>
 
 
-<section class="features">
+<section>
 
-    <h2>Everything You Need To Stay Fit</h2>
+    <div class="container">
 
-    <div class="cards">
+        <div class="section-title">
 
-        <div class="card">
-
-            <h3>Workout Tracker</h3>
-
-            <p>
-
-                Record exercises, sets, reps,
-                weight, duration and calories burned.
-
-            </p>
+            <h2>How It Works</h2>
 
         </div>
 
-        <div class="card">
+        <div class="steps">
 
-            <h3>Challenges</h3>
+            <div class="glass-card step">
 
-            <p>
+                <div class="step-number">1</div>
 
-                Join public challenges or create your own
-                and compete with friends.
+                <h3>Create Account</h3>
 
-            </p>
+                <p>Register in less than one minute.</p>
 
-        </div>
+            </div>
 
-        <div class="card">
+            <div class="glass-card step">
 
-            <h3>Leaderboard</h3>
+                <div class="step-number">2</div>
 
-            <p>
+                <h3>Join Challenge</h3>
 
-                Earn points and climb the rankings by staying active.
+                <p>Select challenges that match your goals.</p>
 
-            </p>
+            </div>
 
-        </div>
+            <div class="glass-card step">
 
-        <div class="card">
+                <div class="step-number">3</div>
 
-            <h3>Progress Photos</h3>
+                <h3>Track Progress</h3>
 
-            <p>
+                <p>Log every workout and improve daily.</p>
 
-                Upload before & after photos
-                and track your transformation.
+            </div>
 
-            </p>
+            <div class="glass-card step">
 
-        </div>
+                <div class="step-number">4</div>
 
-        <div class="card">
+                <h3>Earn Rewards</h3>
 
-            <h3>Daily Streak</h3>
+                <p>Unlock badges and climb the leaderboard.</p>
 
-            <p>
-
-                Build consistency by maintaining
-                your daily workout streak.
-
-            </p>
+            </div>
 
         </div>
 
-        <div class="card">
+    </div>
 
-            <h3>Fitness Community</h3>
+</section>
 
-            <p>
 
-                Connect with friends,
-                motivate each other,
-                and celebrate achievements.
+<section>
 
-            </p>
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Community Stories</h2>
+
+        </div>
+
+        <div class="testimonials">
+
+            <div class="glass-card testimonial">
+
+                <p>
+                    ⭐⭐⭐⭐⭐
+                </p>
+
+                <p>
+                    "This community helped me stay
+                    consistent for over 100 days."
+                </p>
+
+                <h4>Rahul Sharma</h4>
+
+            </div>
+
+            <div class="glass-card testimonial">
+
+                <p>
+                    ⭐⭐⭐⭐⭐
+                </p>
+
+                <p>
+                    "The challenges make working out
+                    genuinely fun and motivating."
+                </p>
+
+                <h4>Priya Patel</h4>
+
+            </div>
+
+            <div class="glass-card testimonial">
+
+                <p>
+                    ⭐⭐⭐⭐⭐
+                </p>
+
+                <p>
+                    "Tracking progress visually keeps
+                    me focused every single day."
+                </p>
+
+                <h4>Arjun Mehta</h4>
+
+            </div>
 
         </div>
 
@@ -168,43 +294,38 @@
 
 <section class="cta">
 
-    <h2>
+    <div class="container">
 
-        Ready To Become A Better Version Of Yourself?
+        <div class="glass-card cta-box">
 
-    </h2>
+            <h2>
+                Ready To Transform Your Lifestyle?
+            </h2>
 
-    <p>
+            <p>
+                Join thousands of fitness enthusiasts
+                building stronger habits together.
+            </p>
 
-        Join thousands of fitness enthusiasts
-        who are already transforming their lives.
+            <a href="/register" class="btn">
+                Start Your Journey
+            </a>
 
-    </p>
+        </div>
 
-    <a href="/register" class="btn primary">
-
-        Join Now
-
-    </a>
+    </div>
 
 </section>
-
 
 <footer>
 
     <p>
-
-        <!-- © 2026 Fitness Challenge Community -->
-
-    </p>
-
-    <p>
-
-        <!-- Built with ❤️ using Node.js, Express, MongoDB & EJS -->
-
+        © 2026 Fitness Challenge Community.
+        All Rights Reserved.
     </p>
 
 </footer>
+
 
 </body>
 </html>

@@ -3,55 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard | Fitness Challenge Community</title>
-
-    <link rel="stylesheet" href="/css/leaderboard.css">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/common.css">
-
-    <style>
-
-        
-
-    </style>
-
+    <link rel="stylesheet" href="/css/leaderboard.css">
 </head>
 <body>
 
 <%- include("partials/navbar") %>
 
-<div class="container">
+<div class="leaderboard-container">
 
-    <div class="title">
-
-        <h1>🏆 Community Leaderboard</h1>
-
-        <p>Compete, stay consistent, and climb the rankings.</p>
-
+    <div class="leaderboard-header">
+        <h1>Leaderboard</h1>
+        <p>Top Fitness Champions</p>
     </div>
 
-    <!-- Top 3 -->
+    <% if(users.length >= 3){ %>
 
     <div class="top-three">
 
-        <% leaderboard.slice(0,3).forEach((user,index)=>{ %>
+        <div class="winner second">
+            <div class="medal">🥈</div>
+            <h3><%= users[1].name %></h3>
+            <p><%= users[1].points%> pts</p>
+        </div>
 
-            <div class="winner">
+        <div class="winner first">
+            <div class="medal">🥇</div>
+            <h2><%= users[0].name %></h2>
+            <p><%= users[0].points%> pts</p>
+        </div>
 
-                <h2>
+        <div class="winner third">
+            <div class="medal">🥉</div>
+            <h3><%= users[2].name %></h3>
+            <p><%= users[2].points%> pts</p>
+        </div>
 
-                    <% if(index===0){ %>🥇<% } %>
+    </div>
 
-                    <% if(index===1){ %>🥈<% } %>
+    <% } %>
 
-                    <% if(index===2){ %>🥉<% } %>
+    <div class="ranking-list">
 
-                </h2>
+        <h2>All Rankings</h2>
 
-                <h3><%= user.name %></h3>
+        <% users.forEach((user,index)=>{ %>
 
-                <p><strong><%= user.points %></strong> Points</p>
+            <div class="rank-card <%= user._id.toString()===currentUserId ? 'current-user' : '' %>">
 
-                <p><%= user.streak %> Day Streak</p>
+                <div class="rank">
+
+                    #<%= index+1 %>
+
+                </div>
+
+                <div class="user-info">
+
+                    <h3><%= user.name %></h3>
+
+                    <p><%= user.email %></p>
+
+                </div>
+
+                <div class="points">
+
+                    <%= user.points%> pts
+
+                </div>
 
             </div>
 
@@ -59,51 +79,21 @@
 
     </div>
 
-    <!-- Full Leaderboard -->
+    <div class="your-rank">
 
-    <table>
+        <h2>Your Rank</h2>
 
-        <tr>
+        <h1>#<%= currentRank %></h1>
 
-            <th>Rank</th>
+        <p>
+            <%= users.find(user => user._id.toString() === currentUserId)?.points|| 0 %> Points
+        </p>
 
-            <th>Name</th>
+        <span>Keep Going 💪</span>
 
-            <th>Points</th>
-
-            <th>Streak</th>
-
-            <th>Workouts</th>
-
-        </tr>
-
-        <% leaderboard.forEach((user,index)=>{ %>
-
-            <tr>
-
-                <td>#<%= index+1 %></td>
-
-                <td><%= user.name %></td>
-
-                <td><%= user.points %></td>
-
-                <td><%= user.streak %> 🔥</td>
-
-                <td><%= user.workouts %></td>
-
-            </tr>
-
-        <% }) %>
-
-    </table>
+    </div>
 
 </div>
-
-<footer>
-
-    <p>© 2026 Fitness Challenge Community</p>
-
-</footer>
 
 </body>
 </html>
